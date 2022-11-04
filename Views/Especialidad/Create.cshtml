@@ -1,21 +1,27 @@
 @model Turnos.Models.Especialidad
 
 <h4>Especialidad</h4>
-<div>
-    <form asp-action="Create">
-        <div asp-validation-summary="ModelOnly"></div>
-        <div>
-            <label asp-for="Descripcion"></label>
-            <input asp-for="Descripcion" />
-            <span asp-validation-for="Descripcion"></span>
-            <span asp-validation-for="Descripcion"></span>
-        </div>
-        <div>
-            <input type="submit" value="Grabar">
-        </div>
-    </form>
-</div>
 
 <div>
-    @Html.ActionLink("Volver a la lista", "Index")
+   <form class="col s12" asp-action="Create">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">subject</i>
+                <input asp-for="Descripcion" type="text" class="validate">
+                <label asp-for="Descripcion"></label>
+                <span asp-validation-for="Descripcion" ></span>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col s6 m6">
+                <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">Grabar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+            <div class="col s6 m6">
+                <a class="waves-effect waves-light btn red" asp-action="Index"><i class="material-icons left">undo</i>Volver</a>                    
+            </div>
+        </div>
+    </form>
 </div>
