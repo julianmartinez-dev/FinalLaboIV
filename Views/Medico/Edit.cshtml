@@ -13,61 +13,97 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdMedico" />
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Apellido" class="control-label"></label>
-                <input asp-for="Apellido" class="form-control" />
-                <span asp-validation-for="Apellido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Matricula" class="control-label"></label>
-                <input asp-for="Matricula" class="form-control" />
-                <span asp-validation-for="Matricula" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefono" class="control-label"></label>
-                <input asp-for="Telefono" class="form-control" />
-                <span asp-validation-for="Telefono" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Direccion" class="control-label"></label>
-                <input asp-for="Direccion" class="form-control" />
-                <span asp-validation-for="Direccion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Localidad" class="control-label"></label>
-                <input asp-for="Localidad" class="form-control" />
-                <span asp-validation-for="Localidad" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HorarioEntrada" class="control-label"></label>
-                <input asp-for="HorarioEntrada" class="form-control" />
-                <span asp-validation-for="HorarioEntrada" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HorarioSalida" class="control-label"></label>
-                <input asp-for="HorarioSalida" class="form-control" />
-                <span asp-validation-for="HorarioSalida" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label"></label>
-                <select name="IdEspecialidad" class="form-control" asp-items="ViewBag.ListaEspecialidades"></select>
+        <form asp-action="Edit" class="col s12">
+            <div asp-validation-summary="ModelOnly"></div>
+
+                  <div class="row">
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">check_circle</i>
+                        <input placeholder="Matricula" type="text" class="validate" asp-for="Matricula">
+                        <label asp-for="Matricula"></label>
+                        <span asp-validation-for="Matricula"></span>
+                    </div>
+                </div>
                 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input placeholder="Nombre" type="text" class="validate" asp-for="Nombre">
+                        <label asp-for="Nombre"></label>
+                        <span asp-validation-for="Nombre"></span>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Apellido" type="text" class="validate" asp-for="Apellido">
+                        <label asp-for="Apellido"></label>
+                        <span asp-validation-for="Apellido"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">home</i>
+                        <input placeholder="Direccion" type="text" class="validate" asp-for="Direccion">
+                        <label asp-for="Direccion"></label>
+                        <span asp-validation-for="Direccion"></span>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">location_city</i>
+                        <input placeholder="Localidad" type="text" class="validate" asp-for="Localidad">
+                        <label asp-for="Localidad"></label>
+                        <span asp-validation-for="Localidad"></span>
+                    </div>
+                </div>
+
+               <div class="row">
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">local_phone</i>
+                        <input placeholder="Telefono" type="text" class="validate" asp-for="Telefono">
+                        <label asp-for="Telefono"></label>
+                        <span asp-validation-for="Telefono"></span>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">email</i>
+                        <input placeholder="Email" type="text" class="validate" asp-for="Email">
+                        <label asp-for="Email"></label>
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">schedule</i>
+                        <input placeholder="Click para seleccionar horario" type="text" class="timepicker" asp-for="HorarioEntrada">
+                        <label asp-for="HorarioEntrada"></label>
+                        <span asp-validation-for="HorarioEntrada"></span>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">schedule</i>
+                        <input placeholder="Click para seleccionar horario" type="text" class="timepicker" asp-for="HorarioSalida">
+                        <label asp-for="HorarioSalida"></label>
+                        <span asp-validation-for="HorarioSalida"></span>
+                    </div>
+                </div>
+                                <input type="hidden" asp-for="IdMedico" />
+
+                <div class="row">
+                     <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">local_hospital</i>
+                        <select name="IdEspecialidad" asp-items="ViewBag.ListaEspecialidades"></select>
+                     </div>
+                </div>
+                <div class="row center">
+                    <div class="col s6">
+                        <button class="btn-large waves-effect waves-light cyan accent-4" type="submit" name="action">Grabar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <a class="waves-effect waves-light btn-large red" asp-action="Index">
+                            <i class="material-icons prefix">undo</i>Volver
+                        </a>
+                    </div>  
+                </div>
         </form>
     </div>
 </div>

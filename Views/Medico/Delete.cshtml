@@ -12,88 +12,71 @@
 
 <body>
 
-    <h3>¿Seguro desea eliminar el siguiente médico?</h3>
+    <h4>¿Seguro desea eliminar el siguiente registro?</h4>
     <div>
-        <h4>Médico</h4>
+        <h5>Médico</h5>
         <hr />
 
         <div class="row">
             <div class="col s12 m6">
-                <div class="card blue-grey darken-1">
+                <div class="card hoverable blue darken-1">
                     <div class="card-content white-text">
-                        <h5><b>@Html.DisplayFor(model => model.Nombre) @Html.DisplayFor(model => model.Apellido)</b></h5>
-                        @* <span class="card-title">@Html.DisplayFor(model => model.Nombre),  @Html.DisplayFor(model => model.Apellido)</span> *@
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
+                        <h5><b>@Html.DisplayFor(model => model.Nombre) @Html.DisplayFor(model => model.Apellido)</b>
+                        </h5>
+                        <dl>
+                            <dt>
+                                <h6><b>@Html.DisplayNameFor(model => model.Matricula) </b>:
+                                @Html.DisplayFor(model => model.Matricula)</h6>
+                            </dt>
+                            <hr>
+                            <dt>
+                                <h6><b>@Html.DisplayNameFor(model => model.Telefono)</b>:
+                                @Html.DisplayFor(model => model.Telefono)</h6>
+                            </dt>
+                            <hr>
+                            <dt>
+                                <h6><b>@Html.DisplayNameFor(model => model.Email)</b>:
+                                @Html.DisplayFor(model => model.Email)</h6>
+                            </dt>
+                            <hr>
+                            <dt>
+                                <h6><b>@Html.DisplayNameFor(model => model.Direccion)</b>:
+                                @Html.DisplayFor(model => model.Direccion)</h6>
+                            </dt>
+                            <hr>
+                            <dt>
+                               <h6> <b>@Html.DisplayNameFor(model => model.Localidad)</b>:
+                                @Html.DisplayFor(model => model.Localidad)</h6>
+                            </dt>
+                            <hr>
+                            <dt>
+                               <h6><b> @Html.DisplayNameFor(model => model.HorarioEntrada)</b>:
+                                @Html.DisplayFor(model => model.HorarioEntrada)</h6>
+                            </dt>
+                            <hr>
+                            <dt>
+                                <h6><b>@Html.DisplayNameFor(model => model.HorarioSalida)</b>:
+                                @Html.DisplayFor(model => model.HorarioSalida)</h6>
+                            </dt>
+
+                        </dl>
                     </div>
                     <div class="card-action blue-grey darken-2">
                         <form asp-action="Delete">
                             <input type="hidden" asp-for="IdMedico" />
-                            <a asp-action="Delete" asp-route-id="@Model.IdMedico">Eliminar</a>
-                            <a asp-action="Index">Volver</a>
+                            <input 
+                                type="submit" 
+                                asp-action="Delete"
+                                asp-route-id="@Model.IdMedico" 
+                                class="waves-effect waves-light btn-small pointer red"
+                                value="ELIMINAR"
+                             />
+                            <a asp-action="Index" class="right waves-effect waves-light btn-small pointer light-green darken-3">Volver</a>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <dl>
-            <dt>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Nombre)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Apellido)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Matricula)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Matricula)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Telefono)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Direccion)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Direccion)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Localidad)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Localidad)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.HorarioEntrada)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.HorarioEntrada)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.HorarioSalida)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.HorarioSalida)
-            </dd>
-        </dl>
 
     </div>
 </body>
