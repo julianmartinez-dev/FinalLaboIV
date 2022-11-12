@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Turnos.Models;
-
+using Turnos.ViewModel;
 namespace Turnos.Controllers
 {
     public class MedicoController : Controller
@@ -19,9 +19,20 @@ namespace Turnos.Controllers
         }
 
         // GET: Medico
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pagina = 1)
         {
-            return View(await _context.Medico.ToListAsync());
+            paginador paginador = new paginador()
+            {
+                cantReg = _context.Medico.Count(),
+                pagActual = pagina,
+                regXpag = 1
+            };
+            ViewData["paginador"] = paginador;
+
+            var datosAmostrar = _context.Medico
+                .Skip((paginador.pagActual - 1) * paginador.regXpag)
+                .Take(paginador.regXpag);
+            return View(await datosAmostrar.ToListAsync());
         }
 
         // GET: Medico/Details/5

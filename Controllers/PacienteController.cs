@@ -1,7 +1,9 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Turnos.Models;
+using Turnos.ViewModel;
 
 namespace Turnos.Controllers
 {
@@ -12,9 +14,20 @@ namespace Turnos.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pagina=1)
         {
-            return View(await _context.Paciente.ToListAsync());
+            paginador paginador = new paginador()
+            {
+                cantReg = _context.Paciente.Count(),
+                pagActual = pagina,
+                regXpag = 1
+            };
+            ViewData["paginador"] = paginador;
+
+            var datosAmostrar = _context.Paciente
+                .Skip((paginador.pagActual - 1) * paginador.regXpag)
+                .Take(paginador.regXpag);
+            return View(await datosAmostrar.ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
