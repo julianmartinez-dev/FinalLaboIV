@@ -1,6 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Turnos.Models;
 using Turnos.ViewModel;
@@ -10,9 +17,11 @@ namespace Turnos.Controllers
     public class PacienteController : Controller
     {
         private readonly TurnosContext _context;
-        public PacienteController(TurnosContext context)
+        private readonly IWebHostEnvironment env;
+        public PacienteController(TurnosContext context, IWebHostEnvironment env)
         {
             _context = context;
+            this.env = env;
         }
         public async Task<IActionResult> Index(int pagina=1)
         {
@@ -134,6 +143,55 @@ namespace Turnos.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Importar(){
+            var archivos = HttpContext.Request.Form.Files;
+            if(archivos != null && archivos.Count > 0){
+                var archivo = archivos[0];
+                var pathDestino = Path.Combine(env.WebRootPath, "importaciones");
 
-    }
+                if(archivo.Length > 0){
+                   var archivoDestino = Guid.NewGuid().ToString().Replace("-","") + Path.GetExtension(archivo.FileName);
+                   string pathcompleto = Path.Combine(pathDestino, archivoDestino);
+                   using(var filestream = new FileStream(pathcompleto, FileMode.Create)){
+                       archivo.CopyTo(filestream);
+                   }
+
+                   using(var file = new FileStream(pathcompleto, FileMode.Open)){
+                        List<string> renglones = new List<string>();
+                        List<Paciente> pacientesArchivo = new List<Paciente>();
+
+                        StreamReader fileContent = new StreamReader(file);
+
+                        do{
+                            renglones.Add(fileContent.ReadLine());
+                        }while(!fileContent.EndOfStream);
+
+                        foreach(string renglon in renglones){
+                            string[] datos = renglon.Split(";");
+                            
+                           Paciente pacienteTemp = new Paciente(){
+                                 Nombre = datos[0],
+                                 Apellido = datos[1],
+                                 Dni = datos[2],
+                                 Telefono = datos[3],
+                                 Email = datos[4],
+                                 Direccion = datos[5]
+                            };
+                            pacientesArchivo.Add(pacienteTemp);
+                           }
+                        if (pacientesArchivo.Count > 0)
+                        {
+                            _context.AddRange(pacientesArchivo);
+                            _context.SaveChanges();
+                        }
+                        ViewBag.cantReng = pacientesArchivo.Count + " de " + renglones.Count;
+                    }
+                      
+                   }
+                }
+            return View();
+            }
+
+        }
+
 }
