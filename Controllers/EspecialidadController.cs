@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Turnos.Models;
+using Turnos.ViewModel;
 
 namespace Turnos.Controllers
 {
@@ -15,9 +16,22 @@ namespace Turnos.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pagina = 1)
         {
-            return View(await _context.Especialidad.ToListAsync());
+            paginador paginador = new paginador()
+            {
+                cantReg = _context.Especialidad.Count(),
+                pagActual = pagina,
+                regXpag = 3
+            };
+            ViewData["paginador"] = paginador;
+            
+            var datosAmostrar = _context.Especialidad
+                .Skip((pagina - 1) * paginador.regXpag)
+                .Take(paginador.regXpag);
+
+            return View(await datosAmostrar.ToListAsync());
+            // return View(await _context.Especialidad.ToListAsync());
         }
 
         public async Task<IActionResult> Edit(int? id)
