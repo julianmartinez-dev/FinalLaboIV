@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Turnos.Models 
@@ -29,6 +30,8 @@ namespace Turnos.Models
         [Required(ErrorMessage = "Debe ingresar una dirección")]
         [Display(Name = "Dirección", Prompt = "Ingrese una Dirección")]
         public string Direccion { get; set; }
+
+        public List<Turno> Turno { get; set; }
         
     }
 }
