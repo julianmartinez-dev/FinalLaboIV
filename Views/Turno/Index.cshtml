@@ -50,142 +50,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="~/fullcalendar/fullcalendar.min.js"></script>
     <script src="~/fullcalendar/locale/es.js"></script>
-    <script>
-       /* $(document).ready(function(){
-
-            $('.modal').modal() //inicializa el modal
-
-            var horarioDesde = ""
-            var horarioHasta = ""
-            var turnos = []
-            var turnoSeleccionado = null
-
-            ObtenerTurnosYactualizar($("#IdMedico").val())
-
-            //Evento OnChange del select de medicos
-            $("#IdMedico").change(function () {
-                ObtenerTurnosYactualizar(this.value)
-            })
-
-            function ObtenerTurnosYactualizar(idMedico){
-                turnos = []
-                $.ajax({
-                    url: "Turno/ObtenerTurnos",
-                    type: "GET",
-                    data: { 'idMedico': idMedico },
-                    success: function (datos) {
-                        $.each(datos, function (item, v) {
-                            //poner las iniciales en miniscula.
-                            turnos.push({
-                                idTurno: v.idTurno,
-                                idPaciente: v.idPaciente,
-                                idMedico: v.idMedico,
-                                start: moment(v.fechaHoraInicio),
-                                end: v.fechaHoraFin != null ? moment(v.fechaHoraFin) : null,
-                            })
-                        })
-                        GenerarCalendario(turnos)
-                        //$('#CalendarioTurnos').fullCalendar('removeEvents')
-                        //$('#CalendarioTurnos').fullCalendar('addEventSource', turnos)
-                    },
-                    error: function (error) {
-                        alert("Error al obtener los turnos")
-                    }
-                })
-            }
-
-            //Generar el calendario para el medico seleccionado
-            function GenerarCalendario(turnos){
-                //Traigo el horario del medico seleccionado
-                //Horario de entrada
-                $.ajax({
-                    type: "GET",
-                    url: "Medico/TraerHorarioAtencionDesde",
-                    data: { "idMedico": $("#IdMedico").val() },
-                    async: false,
-                    success: function (resultado) {
-                        horarioDesde = resultado
-                    },
-                    error: function () {
-                        alert("Error al traer horario del medico")
-                    }
-                })
-                //Horario de salida
-                $.ajax({
-                    type: "GET",
-                    url: "Medico/TraerHorarioAtencionHasta",
-                    data: { "idMedico": $("#IdMedico").val() },
-                    async: false,
-                    success: function (resultado) {
-                        horarioHasta = resultado
-                    },
-                    error: function (resultado) {
-                        alert("Error al traer horario del medico")
-                    }
-                })
-
-                //Limpiar el calendario
-                $('#CalendarioTurnos').fullCalendar('destroy');
-
-                //Genero el calendario con sus propiedades de ui
-                $('#CalendarioTurnos').fullCalendar({
-                    contentHeight: 'auto',
-                    defaultDate: new Date(),
-                    slotLabelFormat: 'HH:mm',
-                    defaultView: 'agendaWeek',
-                    header: {
-                        left: 'prev,next today',
-                        right: 'month, agendaWeek, agendaDay'
-                    },
-                    slotDuration: '00:30',
-                    nowIndicator: true,
-                    allDaySlot: false,
-                    selectTable: true,
-                    eventLimit: true,
-                    minTime: horarioDesde,
-                    maxTime: horarioHasta,
-                    events: turnos,
-                    select: function(fechaHoraInicio, txtFechaHoraFin){
-                        turnoSeleccionado = {
-                            idTurno: 0,
-                            start: fechaHoraInicio,
-                            end: txtFechaHoraFin
-                        }
-                    AbrirPopUp()
-                    },
-                     eventClick: function (turnoClickeado) {
-                        turnoSeleccionado = turnoClickeado;
-                        AbrirPopup();
-                    }                                              
-                })
-            }
-
-            //Abrir el modal para crear un turno
-            function AbrirPopUp(){
-                console.log('click en turno')
-                $("#txtFechaHoraInicio").val(turnoSeleccionado.start.format('DD/MM/YYYY HH:mm'))
-                $("#txtFechaHoraFin").val(turnoSeleccionado.end.format('DD/MM/YYYY HH:mm'))
-                
-                if(turnoSeleccionado.idTurno == 0){
-                    $("#btnEliminar").hide()
-                    $("#btnGuardar").show()
-                }
-                else{
-                    $("#btnGuardar").hide()
-                    $("#btnEliminar").show()
-                }
-                $("#ModalTurno").modal('open')
-            }
-        }) */
-
-        
+    <script>        
          $(document).ready(function () {
             $('.modal').modal(); //Para que funcionen los eventos show y hide del modal
                 var horarioDesde = "";
                 var horarioHasta = "";
                 var turnos = []; 
             var turnoSeleccionado = "";
-            alert($.fn.jquery);
             ObtenerTurnosYActualizar($('#IdMedico').val()); 
 
             $('#IdMedico').change(function(){
@@ -285,6 +156,7 @@
 
             function AbrirPopup()
             {
+                console.log(turnoSeleccionado)
                 //$('#txtFechaHoraInicio').val(turnoSeleccionado.start.format('DD/MM/YYYY HH:mm'));
                 //$('#txtFechaHoraFin').val(turnoSeleccionado.end.format('DD/MM/YYYY HH:mm'));
                 $('#txtFechaHoraInicio').val(turnoSeleccionado.start.format('YYYY-MM-DD')+'T'+turnoSeleccionado.start.format('HH:mm:ss'));
@@ -294,6 +166,7 @@
                     $('#btnEliminar').hide();
                     $('#txtPaciente').val($('#IdPaciente option:selected').text());
                 }else{
+                    
                     $('#btnGuardar').hide();
                     $('#btnEliminar').show();
                     $('#txtPaciente').val(turnoSeleccionado.paciente);
@@ -316,7 +189,7 @@
                     type: "POST",
                     url: 'Turno/GrabarTurno',
                     data: {'turno': data },
-                    headers: {'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()},
+                   // headers: {'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()},
                     success: function (e) {
                         if (e.ok) {
                             ObtenerTurnosYActualizar($('#IdMedico').val());
@@ -334,7 +207,7 @@
                         type: "POST",
                         url: 'Turno/EliminarTurno',
                         data: { 'IdTurno': turnoSeleccionado.idTurno },
-                        headers: {'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()},
+                       // headers: {'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()},
                         success: function (e){
                             if (e.ok){
                                 ObtenerTurnosYActualizar($('#IdMedico').val());
