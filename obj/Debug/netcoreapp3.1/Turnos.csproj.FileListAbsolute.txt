@@ -1,4 +1,3 @@
-C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Turnos.csprojAssemblyReference.cache
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\staticwebassets\Turnos.StaticWebAssets.Manifest.cache
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\staticwebassets\Turnos.StaticWebAssets.xml
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Turnos.MvcApplicationPartsAssemblyInfo.cache
@@ -154,3 +153,4 @@ C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Medico\Edit.
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Medico\Index.cshtml.g.cs
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Turno\Index.cshtml.g.cs
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_paginador.cshtml.g.cs
+C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Turnos.csprojAssemblyReference.cache

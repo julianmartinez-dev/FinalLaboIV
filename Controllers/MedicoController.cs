@@ -19,20 +19,42 @@ namespace Turnos.Controllers
         }
 
         // GET: Medico
-        public async Task<IActionResult> Index(int pagina = 1)
+        public async Task<IActionResult> Index(string busquedaNombre, int? busquedaEspecialidad, int pagina = 1)
         {
-            paginador paginador = new paginador()
-            {
-                cantReg = _context.Medico.Count(),
+            paginador paginador = new paginador(){
                 pagActual = pagina,
-                regXpag = 1
+                regXpag = 3,
             };
-            ViewData["paginador"] = paginador;
 
-            var datosAmostrar = _context.Medico
+            var consulta = _context.Medico.Include(m => m.MedicoEspecialidad).ThenInclude(m => m.Especialidad).Select(m => m);
+            if (!String.IsNullOrEmpty(busquedaNombre))
+            {
+                consulta = consulta.Where(m => m.Nombre.Contains(busquedaNombre));
+            }
+
+            if (busquedaEspecialidad.HasValue)
+            {
+                consulta = consulta.Where(m => m.MedicoEspecialidad.Any(me => me.IdEspecialidad == busquedaEspecialidad));
+            }
+
+            paginador.cantReg = consulta.Count();
+            var datosAmostrar = consulta
                 .Skip((paginador.pagActual - 1) * paginador.regXpag)
                 .Take(paginador.regXpag);
-            return View(await datosAmostrar.ToListAsync());
+            
+            foreach (var item in Request.Query)
+            {
+                paginador.ValoresQueryString.Add(item.Key, item.Value);
+            }
+
+            MedicoViewModel Datos = new MedicoViewModel(){
+                ListaMedicos = await datosAmostrar.ToListAsync(),
+                ListaEspecialidades = new SelectList(_context.Especialidad, "IdEspecialidad", "Descripcion", busquedaEspecialidad),
+                busquedaEspecialidad = busquedaEspecialidad,
+                busquedaNombre = busquedaNombre,
+                paginador = paginador
+            };
+            return View(Datos);        
         }
 
         // GET: Medico/Details/5

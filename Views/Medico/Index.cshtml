@@ -1,53 +1,64 @@
-@model IEnumerable<Turnos.Models.Medico>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
+@model Turnos.ViewModel.MedicoViewModel
+@{
+    ViewData["Title"] = "Listado de Medicos";
+}
 <p>
     <a asp-action="Create" class="btn-floating btn-large green darken-1">
         <i class="material-icons">person_add</i>
     </a>
 </p>
+
+<form asp-action="Index" method="get" class="z-depth-4" style="padding: 10px; margin-bottom: 20px;">
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <input name="busquedaNombre" type="text" value="@Model.busquedaNombre">
+            <label for="Nombre">Buscar por nombre</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select name="busquedaEspecialidad" asp-items="@Model.ListaEspecialidades" selected-item="@Model.busquedaEspecialidad">
+                <option value="">Todas las especialidades</option>
+            </select>
+        </div>
+        <button type="submit" value="Filtrar" class="waves-effect waves-light btn-small orange"><i class="material-icons left">search</i>Filtrar</button>
+    </div>
+</form>
+
 <table class="responsive-table highlight z-depth-3 blue lighten-5">
     <thead class="blue darken-1 white-text">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                @Html.DisplayNameFor(model => model.ListaMedicos[0].Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Apellido)
+                @Html.DisplayNameFor(model => model.ListaMedicos[0].Apellido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Matricula)
+                @Html.DisplayNameFor(model => model.ListaMedicos[0].Matricula)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefono)
+                @Html.DisplayNameFor(model => model.ListaMedicos[0].Telefono)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.ListaMedicos[0].Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Direccion)
+                @Html.DisplayNameFor(model => model.ListaMedicos[0].Direccion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Localidad)
+                @Html.DisplayNameFor(model => model.ListaMedicos[0].Localidad)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HorarioEntrada)
+                @Html.DisplayNameFor(model => model.ListaMedicos[0].HorarioEntrada)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HorarioSalida)
+                @Html.DisplayNameFor(model => model.ListaMedicos[0].HorarioSalida)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.ListaMedicos) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
@@ -92,7 +103,4 @@
     </tbody>
 </table>
 
-<partial name="_paginador" for="@ViewData["paginador"]" />
-
-</body>
-</html>
+<partial name="_paginador" for="@Model.paginador" />
