@@ -1,0 +1,42 @@
+@model Turnos.ViewModel.paginador
+
+@{
+    var cantReg = Model.cantReg;
+    var pagActual = Model.pagActual;
+    var regXpag = Model.regXpag;
+    var totalPag = Model.totalPag;
+    var ValoresQueryString = Model.ValoresQueryString;
+}
+
+    <ul class="pagination">
+        @if (pagActual > 1)
+        {
+            <li class="waves-effect"><a asp-route-pagina="@(Model.pagActual -1)" tabindex="-1"><i class="material-icons">chevron_left</i></a></li>
+        }
+        else
+        {
+            <li class="disabled"><i class="material-icons">chevron_left</i></li>
+        }
+
+        @for (int i = 1; i <= totalPag; i++)
+        {
+            if (i == pagActual)
+            {
+                    <li class="active waves-effect"><a asp-route-pagina="@pagActual">@i</a></li>
+            }
+            else
+            {
+                 <li class="waves-effect"><a asp-route-pagina="@i">@i</a></li>
+            }
+        }
+
+        @if (pagActual < totalPag)
+        {
+             <li class="waves-effect"><a asp-route-pagina="@(Model.pagActual +1)" tabindex="+1"><i class="material-icons">chevron_right</i></a></li>
+        }
+        else
+        {
+            <li class="waves-effect disabled"><i class="material-icons">chevron_right</i></li>
+        }
+    </ul>
+

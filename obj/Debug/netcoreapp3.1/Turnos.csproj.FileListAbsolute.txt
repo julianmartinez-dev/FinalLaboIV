@@ -153,3 +153,4 @@ C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Medico\Detai
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Medico\Edit.cshtml.g.cs
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Medico\Index.cshtml.g.cs
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Turno\Index.cshtml.g.cs
+C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_paginador.cshtml.g.cs
