@@ -14412,6 +14412,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\chapa\\Documents\\Turnos\\Views\\Turno\\Index.cshtml",
+      "TargetPath": "Views\\Turno\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\chapa\\Documents\\Turnos\\Views\\Paciente\\Edit.cshtml",
       "TargetPath": "Views\\Paciente\\Edit.cshtml",
       "FileKind": "mvc"

@@ -152,3 +152,4 @@ C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Medico\Delet
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Medico\Details.cshtml.g.cs
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Medico\Edit.cshtml.g.cs
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Medico\Index.cshtml.g.cs
+C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Turno\Index.cshtml.g.cs
