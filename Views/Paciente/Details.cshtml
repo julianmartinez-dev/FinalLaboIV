@@ -1,49 +1,32 @@
 @model Turnos.Models.Paciente
 
 <h4>Paciente</h4>
-
-<div>
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Apellido)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Apellido)
-        <dt>
-            @Html.DisplayNameFor(model => model.Dni)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Dni)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
-
-</div>
-
-<div>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.IdPaciente }) |
-    @Html.ActionLink("Volver", "Index")
-</div>
+<hr />
+    <div class="row">        
+        <div class="col s12 m6">
+            <div class="card hoverable green darken-1">
+                <div class="card-content white-text">
+                <span class="card-title"><h5><b>@Html.DisplayFor(model => model.Nombre), @Html.DisplayFor(model => model.Apellido)</b></h5></span>                    
+                <dt>
+                    <h6>@Html.DisplayNameFor(model => model.Direccion): @Html.DisplayFor(model => model.Direccion) </h6>
+                </dt> 
+                <hr/>
+                 <dt>
+                    <h6>@Html.DisplayNameFor(model => model.Dni): @Html.DisplayFor(model => model.Dni) </h6>
+                </dt> 
+                <hr/>                   
+                <dt >
+                    <h6>@Html.DisplayNameFor(model => model.Telefono): @Html.DisplayFor(model => model.Telefono)</h6>
+                </dt>
+                <hr/>                    
+                <dt >
+                    <h6>@Html.DisplayNameFor(model => model.Email): @Html.DisplayFor(model => model.Email)</h6>
+                </dt>                
+            </div>
+            <div class="card-action blue-grey darken-2">
+                <a asp-action="Edit" asp-route-id="@Model.IdPaciente">Editar</a> 
+                <a asp-action="Index">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>   

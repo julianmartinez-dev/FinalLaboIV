@@ -1,45 +1,59 @@
 @model Turnos.Models.Paciente
 
 <h4>Paciente</h4>
-<div>
-    <form asp-action="Create">
-        <div asp-validation-summary="ModelOnly"></div>
-        <div>
-            <label asp-for="Nombre"></label>
-            <input asp-for="Nombre" />
-            <span asp-validation-for="Nombre"></span>
-            <span asp-validation-for="Nombre"></span>
-        </div>
-        <div>
-            <label asp-for="Apellido"></label>
-            <input asp-for="Apellido" />
-            <span asp-validation-for="Apellido"></span>
-        <div>
-        <div>
-            <label asp-for="Dni"></label>
-            <input asp-for="Dni" />
-            <span asp-validation-for="Dni"></span>
-        </div>
-        <div>
-            <label asp-for="Direccion"></label>
-            <input asp-for="Direccion" />
-            <span asp-validation-for="Direccion"></span>
-        </div>
-        <div>
-            <label asp-for="Telefono"></label>
-            <input asp-for="Telefono" />
-            <span asp-validation-for="Telefono"></span>
-        </div>
-        <div>
-            <label asp-for="Email"></label>
-            <input asp-for="Email" />
-            <span asp-validation-for="Email"></span>
-        </div>
-            <input type="submit" value="Grabar">
-        </div>
-    </form>
-</div>
+<hr />
+<div class="row">
+    <div>
+        <form class="col s12" asp-action="Create">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input asp-for="Nombre" type="text" class="validate">
+                    <label asp-for="Nombre"></label>
+                    <span asp-validation-for="Nombre" ></span>
+                </div>
+                <div class="input-field col s6">                    
+                        <input asp-for="Apellido" type="text" class="validate">
+                            <label asp-for="Apellido"></label>
+                            <span asp-validation-for="Apellido" ></span>
+                        </div>
+                    </div>
 
-<div>
-    @Html.ActionLink("Volver a la lista", "Index")
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">chrome_reader_mode</i>
+                        <input asp-for="Dni" type="text" class="validate">
+                        <label asp-for="Dni"></label>
+                        <span asp-validation-for="Dni" ></span>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">markunread_mailbox</i>
+                        <input asp-for="Direccion" type="text" class="validate">
+                        <label asp-for="Direccion"></label>
+                        <span asp-validation-for="Direccion" ></span>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">phone</i>
+                        <input asp-for="Telefono" type="tel" class="validate">
+                        <label asp-for="Telefono"></label>
+                        <span asp-validation-for="Telefono" ></span>
+                    </div>    
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">local_post_office</i>
+                        <input asp-for="Email" type="tel" class="validate">
+                        <label asp-for="Email"></label>
+                    <span asp-validation-for="Email" ></span>
+                </div> 
+            <div class="row">
+                <div class="col s6 m6">
+                    <button class="btn waves-effect waves-light cyan accent-4" type="submit" name="action">Grabar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                <div class="col s6 m6">
+                    <a class="waves-effect waves-light btn grey darken-4" asp-action="Index"><i class="material-icons left">undo</i>Volver</a>                    
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
