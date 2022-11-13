@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Turnos.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Turnos
 {
@@ -27,6 +28,41 @@ namespace Turnos
         {
             services.AddControllersWithViews();
             services.AddDbContext<TurnosContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TurnosContext")));
+            //Identity services
+            services.AddDefaultIdentity<IdentityUser>(
+                options =>
+                {
+                    options.SignIn.RequireConfirmedAccount = false;
+                    // Password settings.
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequiredLength = 8;
+                    options.Password.RequiredUniqueChars = 0;
+                    // Lockout settings.
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                    options.Lockout.MaxFailedAccessAttempts = 5;
+                    options.Lockout.AllowedForNewUsers = true;
+                    // User settings.
+                    options.User.AllowedUserNameCharacters =
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                    options.User.RequireUniqueEmail = false;
+                })
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<TurnosContext>();
+
+            services.AddControllersWithViews();
+
+            services.ConfigureApplicationCookie(options =>
+                {
+                    // Cookie settings
+                    options.Cookie.HttpOnly = true;
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                    options.LoginPath = "/Identity/Account/Login";
+                    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                    options.SlidingExpiration = true;
+                });
 
         }
 
@@ -46,6 +82,9 @@ namespace Turnos
             // app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            // Identity
+            app.UseAuthentication();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -55,6 +94,7 @@ namespace Turnos
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

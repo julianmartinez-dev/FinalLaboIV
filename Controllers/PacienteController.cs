@@ -14,6 +14,7 @@ using Turnos.ViewModel;
 
 namespace Turnos.Controllers
 {
+    [Authorize]
     public class PacienteController : Controller
     {
         private readonly TurnosContext _context;
@@ -23,13 +24,15 @@ namespace Turnos.Controllers
             _context = context;
             this.env = env;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index(int pagina=1)
         {
             paginador paginador = new paginador()
             {
                 cantReg = _context.Paciente.Count(),
                 pagActual = pagina,
-                regXpag = 1
+                regXpag = 3
             };
             ViewData["paginador"] = paginador;
 
@@ -39,6 +42,7 @@ namespace Turnos.Controllers
             return View(await datosAmostrar.ToListAsync());
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

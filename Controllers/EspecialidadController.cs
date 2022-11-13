@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Turnos.Models;
@@ -7,6 +8,7 @@ using Turnos.ViewModel;
 
 namespace Turnos.Controllers
 {
+    [Authorize]
     public class EspecialidadController : Controller
     {
         private readonly TurnosContext _context;
@@ -16,6 +18,7 @@ namespace Turnos.Controllers
         }
 
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index(int pagina = 1)
         {
             paginador paginador = new paginador()

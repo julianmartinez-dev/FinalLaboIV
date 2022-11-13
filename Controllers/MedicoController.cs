@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using Turnos.Models;
 using Turnos.ViewModel;
 namespace Turnos.Controllers
 {
+    [Authorize]
     public class MedicoController : Controller
     {
         private readonly TurnosContext _context;
@@ -19,6 +21,7 @@ namespace Turnos.Controllers
         }
 
         // GET: Medico
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string busquedaNombre, int? busquedaEspecialidad, int pagina = 1)
         {
             paginador paginador = new paginador(){
@@ -58,6 +61,7 @@ namespace Turnos.Controllers
         }
 
         // GET: Medico/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -213,12 +217,12 @@ namespace Turnos.Controllers
         {
             return _context.Medico.Any(e => e.IdMedico == id);
         }
-
+        [AllowAnonymous]
         public string TraerHorarioAtencionDesde(int idMedico){
             var horarioAtencionDesde = _context.Medico.Where(m => m.IdMedico == idMedico).FirstOrDefault().HorarioEntrada;
             return horarioAtencionDesde.Hour + ":" + horarioAtencionDesde.Minute;
         }
-
+        [AllowAnonymous]
         public string TraerHorarioAtencionHasta(int idMedico)
         {
             var horarioAtencionHasta = _context.Medico.Where(m => m.IdMedico == idMedico).FirstOrDefault().HorarioSalida;

@@ -155,3 +155,16 @@ C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Turno\Index.
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_paginador.cshtml.g.cs
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Turnos.csprojAssemblyReference.cache
 C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Paciente\Importar.cshtml.g.cs
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Turnos.StaticWebAssets.xml
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\chapa\Documents\Turnos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Turnos.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\chapa\Documents\Turnos\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs

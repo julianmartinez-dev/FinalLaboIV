@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,7 +21,10 @@
             <div class="nav-wrapper grey darken-3">
                 <a asp-controller="Home" asp-action="Index" class="brand-logo center">Consultorio</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
+                <div class="right hide-on-med-and-down">
+                    <partial name="_LoginPartial" />
+                </div>
+                <ul class="left hide-on-med-and-down">
                     <li><a asp-controller="Home" asp-action="Index">Inicio</a></li>
                     <li><a asp-controller="Especialidad" asp-action="Index">Especialidades</a></li>
                     <li><a asp-controller="Paciente" asp-action="Index">Pacientes</a></li>
@@ -34,6 +41,25 @@
             <li><a asp-controller="Paciente" asp-action="Index">Pacientes</a></li>
             <li><a asp-controller="Medico" asp-action="Index">Medicos</a></li>
              <li><a asp-controller="Turno" asp-action="Index">Turnos</a></li>
+            <hr>
+            @if(SignInManager.IsSignedIn(User)){
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
+                </li>
+                <li>
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" style="display: flex; justify-content: center">
+                        <button type="submit" class=" btn waves-effect waves-light red darken-2" style="width: 90%;">Cerrar Sesión</button>
+                    </form>
+                </li>
+            }
+            else{
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Register">Registrar</a>
+                </li>
+                <li>
+                     <a asp-area="Identity" asp-page="/Account/Login">Ingresar</a>
+                </li>
+            }
         </ul>
     </header>
     <div class="container">
