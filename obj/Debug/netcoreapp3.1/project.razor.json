@@ -14457,6 +14457,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\chapa\\Documents\\Turnos\\Views\\Shared\\_LoginPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\chapa\\Documents\\Turnos\\Views\\Medico\\Create.cshtml",
       "TargetPath": "Views\\Medico\\Create.cshtml",
       "FileKind": "mvc"

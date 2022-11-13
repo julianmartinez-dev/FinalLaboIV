@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Turnos.Models;
 
 namespace Turnos.Models
 {
-    public class TurnosContext : DbContext
+    public class TurnosContext : IdentityDbContext<IdentityUser>
     {
 
         public TurnosContext(DbContextOptions<TurnosContext> options) : base(options) { }
@@ -18,6 +20,9 @@ namespace Turnos.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+         
+
             modelBuilder.Entity<Especialidad>(entidad =>
             {
                 entidad.ToTable("Especialidad");
@@ -137,6 +142,8 @@ namespace Turnos.Models
             .HasOne(e => e.Medico)
             .WithMany(e => e.Turno)
             .HasForeignKey(e => e.IdMedico);
+            
+         base.OnModelCreating(modelBuilder);
         }
 
     }
