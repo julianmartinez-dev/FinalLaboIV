@@ -27,7 +27,7 @@ namespace Turnos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<TurnosContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TurnosContext")));
+            services.AddDbContext<TurnosContext>(options => options.UseSqlite(Configuration.GetConnectionString("TurnosContext")));
             //Identity services
             services.AddDefaultIdentity<IdentityUser>(
                 options =>

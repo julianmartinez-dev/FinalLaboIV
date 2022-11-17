@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chapa\\Documents\\Turnos\\Turnos.csproj": {}
+    "/Users/U633153/Documents/Julian/Laboratorio/FinalLaboIV/Turnos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chapa\\Documents\\Turnos\\Turnos.csproj": {
+    "/Users/U633153/Documents/Julian/Laboratorio/FinalLaboIV/Turnos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chapa\\Documents\\Turnos\\Turnos.csproj",
+        "projectUniqueName": "/Users/U633153/Documents/Julian/Laboratorio/FinalLaboIV/Turnos.csproj",
         "projectName": "Turnos",
-        "projectPath": "C:\\Users\\chapa\\Documents\\Turnos\\Turnos.csproj",
-        "packagesPath": "C:\\Users\\chapa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chapa\\Documents\\Turnos\\obj\\",
+        "projectPath": "/Users/U633153/Documents/Julian/Laboratorio/FinalLaboIV/Turnos.csproj",
+        "packagesPath": "/Users/U633153/.nuget/packages/",
+        "outputPath": "/Users/U633153/Documents/Julian/Laboratorio/FinalLaboIV/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\chapa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/U633153/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,6 +56,10 @@
               "target": "Package",
               "version": "[3.1.1, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[3.1.1, )"
@@ -85,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
         }
       }
     }
